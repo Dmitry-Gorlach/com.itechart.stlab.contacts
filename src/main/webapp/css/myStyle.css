@@ -1,0 +1,75 @@
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    margin-bottom: 15px;
+    display: none;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.modal-content{
+    background-color: #95999c;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid red;
+    width: 80%;
+}
+.close{
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.h3 {
+    border: 1px solid #1e7e34;
+}
+
+.hidden {
+    display: none;
+}
+.modal {
+    width: 70%;
+}
+.nav-item {
+    color: white;
+}
+
+p.infoMessage {
+    color: red;
+}
+
+span.infoMessage{
+    color: red;
+}
+span.emailSuccess{
+    color: green;
+}
+h3.successMessage {
+    color: #218838 ;
+}
+.hidden {
+    display: none;
+    visibility: hidden;
+}
+
