@@ -1,0 +1,9 @@
+.idea/
+web/
+out/
+target/
+resources/email/*
+resources/template/*
+webapp/jsp/images/*
+webapp/jsp/attachments/*
+WEB-INF/lib/*
