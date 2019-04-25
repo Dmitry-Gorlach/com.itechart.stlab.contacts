@@ -33,9 +33,9 @@ public class DataValidator {
     }
 
     public static boolean validatePhoneParameters(String[] countryCodes, String[] phoneCodes, String[] numbers,
-                                                  String[] typeCodes, String[] selectedAttachment){
+                                                  String[] typeCodes){
         return  countryCodes != null && phoneCodes != null && numbers != null
-                && typeCodes != null && selectedAttachment != null;
+                && typeCodes != null;
     }
 
     public static boolean validateAttachmentParameters(List<Part> fileParts, String[] uploadDate, String[] comments){

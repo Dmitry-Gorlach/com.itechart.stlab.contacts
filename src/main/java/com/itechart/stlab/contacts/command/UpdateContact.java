@@ -114,15 +114,17 @@ public class UpdateContact implements Command {
 
 
 
-        if(validatePhoneParameters(countryCodes,phoneCodes,numbers,typeCodes, selectedPhones)) {
+        if(validatePhoneParameters(countryCodes,phoneCodes,numbers,typeCodes)) {
             for (int i = 0; i < countryCodes.length; i++) {
-                if (phoneNumberLogic.findPhoneNumberById(Integer.parseInt(selectedPhones[i])) != null && selectedPhones != null ) {
+                if(selectedPhones != null){
+                    Integer selectedPhone = Integer.parseInt(selectedPhones[i]);
+                    phoneNumberLogic.findPhoneNumberById(selectedPhone);
                     phoneNumberLogic.update(countryCodes[i],
                             phoneCodes[i],
                             numbers[i],
                             PhoneNumber.TypeCode.valueOf(typeCodes[i]),
                             comments[i],
-                            Integer.parseInt(selectedPhones[i]));
+                            selectedPhone);
                 } else {
                     phoneNumberLogic.add(countryCodes[i],
                             phoneCodes[i],
@@ -157,29 +159,6 @@ public class UpdateContact implements Command {
             request.setAttribute("message", "There was an error: " + fne.getMessage());
         }
 
-//        String[] attachmentNames = request.getParameterMap().get(PARAM_ATTACHMENT_NAME);
-//        String[] dateUpload = request.getParameterMap().get(PARAM_ATTACHMENT_DATE_UPLOAD);
-//        String[] attachmentComments = request.getParameterMap().get(PARAM_ATTACHMENT_COMMENT);
-//        String[] selectedAttachment= request.getParameterMap().get("selectedAttachments");
-//
-//        if(validateAttachmentParameters(attachmentNames, dateUpload, attachmentComments)) {
-//            for (int i = 0; i < attachmentNames.length; i++) {
-//                if (attachmentLogic.findAttachmentByContactId(Integer.parseInt(selectedPhones[i])) != null && selectedAttachment != null ) {
-//                    attachmentLogic.update(attachmentNames[i],
-//                            dateUpload[i],
-//                            numbers[i],
-//                            comments[i],
-//                            Integer.parseInt(selectedAttachment[i]));
-//                } else {
-//                    phoneNumberLogic.add(countryCodes[i],
-//                            phoneCodes[i],
-//                            numbers[i],
-//                            PhoneNumber.TypeCode.valueOf(typeCodes[i]),
-//                            comments[i],
-//                            id);
-//                }
-//            }
-//        }
 
         String uploadAttachmentPath = "C:\\Users\\User\\IdeaProjects\\contacts\\src\\main\\webapp\\jsp" + File.separator + UPLOAD_ATTACHMENT_DIRECTORY;
         createUploadDir(uploadAttachmentPath);
@@ -187,7 +166,6 @@ public class UpdateContact implements Command {
         final String[] commentAttachment = request.getParameterValues("commentAttachment");
         final String[] dateAttachment = request.getParameterValues("date_upload");
 
-//        final LocalDate dateAttachment = LocalDate.parse(request.getParameter("date_upload"), formatter);
         List<Part> fileParts = request.getParts().stream().filter(part -> "uploadAttachment".equals(part.getName())).collect(Collectors.toList());
         if(validateAttachmentParameters(fileParts, dateAttachment, commentAttachment)) {
             for (int i = 0; i < dateAttachment.length; i++) {
